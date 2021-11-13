@@ -1,3 +1,9 @@
+import java.util.ArrayList; // import the ArrayList class
+
+import java.io.*;
+import java.util.*;
+import javax.sound.midi.*;
+
 public class midiExport {
 
     String [] arpeggArr;
