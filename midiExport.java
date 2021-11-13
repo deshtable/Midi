@@ -51,7 +51,7 @@ public class midiExport {
         me = new MidiEvent(mm,(long)0);
         t.add(me);
 
-        String[] noteClassifier = {"c","c#","d","d#","e","f","f#","g","g#", "a", "a#", "b"};
+        String[] noteClassifier = {"c","cs","d","ds","e","f","fs","g","gs", "a", "as", "b"};
         //byte noteByte;
         String noteByteString;
         ArrayList<String> noteList = new ArrayList<String>(Arrays.asList("c","c#","d","d#","e","f","f#","g","g#", "a", "a#", "b"));
