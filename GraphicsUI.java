@@ -15,7 +15,6 @@ public class GraphicsUI extends JFrame implements MouseListener {
     }
     public void drawpiano(Graphics g){
         g.setColor(Color.WHITE);
-        int
         g.fillRect(0, 0, 800, 480);
         g.setColor(Color.BLACK);
         for(int i=1;i<=7;i++)
