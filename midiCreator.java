@@ -11,9 +11,9 @@
 import java.io.*;
 import java.util.*;
 import javax.sound.midi.*; // package for all midi classes
-public class midiCreator
+public class midifile
 {
-  /*public static void main(String argv[]) {
+  public static void main(String argv[]) {
     System.out.println("midifile begin ");
 	try
 	{
@@ -123,6 +123,4 @@ public class midiCreator
 	} //catch
     System.out.println("midifile end ");
   } //main
-  */
-
 } //midifile
