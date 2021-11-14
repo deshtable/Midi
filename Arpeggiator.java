@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import java.io.*;
+import java.util.*;
+import javax.sound.midi.*;
 public class Arpeggiator {
     String firstNote;
     int firstNoteInd;
