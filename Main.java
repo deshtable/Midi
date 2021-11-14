@@ -3,6 +3,7 @@ public class Main {
         // Creation of a GraphicsDemo Object
         GraphicsUI draw = new GraphicsUI();
 
+
         Arpeggiator arpie = new Arpeggiator("c");
 
         arpie.playArpegg(2);
