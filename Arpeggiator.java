@@ -33,6 +33,11 @@ public class Arpeggiator {
         return arpeggArr;
     }
 
+
+
+
+
+    
     public void playArpegg(String[] arpeggArr){ // takes in the final arpeggArr from graphics and plays it through sequencer
       try {
 
