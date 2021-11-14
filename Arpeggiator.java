@@ -9,7 +9,7 @@ public class Arpeggiator {
     String firstNote;
     int firstNoteInd;
     ArrayList<String> noteList = new ArrayList<String>(
-            Arrays.asList("c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"));
+            Arrays.asList("c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b","c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"));
 
     public Arpeggiator(String inNote) {
         firstNote = inNote;
@@ -20,7 +20,8 @@ public class Arpeggiator {
 
         if (typeArpeggio == 1)  // If the type of arpeggio is chosen to be a major chord
             return majorArpeggio();
-
+        if (typeArpeggio == 2)  // If the type of arpeggio is chosen to be a major chord
+            return minorArpeggio();
         return null;
     }
 
@@ -31,6 +32,19 @@ public class Arpeggiator {
         arpeggArr[0] = noteList.get(firstNoteInd);
         arpeggArr[1] = noteList.get(firstNoteInd + 4);
         arpeggArr[2] = noteList.get(firstNoteInd + 7);
+
+        //
+        return arpeggArr;
+    }
+    private String[] minorArpeggio() {
+
+        String[] arpeggArr = new String[3];
+
+        arpeggArr[0] = noteList.get(firstNoteInd);
+        arpeggArr[1] = noteList.get(firstNoteInd + 3);
+        arpeggArr[2] = noteList.get(firstNoteInd + 7);
+
+
         //
         return arpeggArr;
     }
@@ -86,7 +100,7 @@ public class Arpeggiator {
             me = new MidiEvent(mm, (long) 0);
             t.add(me);
 
-            String[] noteClassifier = {"c", "cs", "d", "ds", "e", "f", "fs", "g", "gs", "a", "as", "b"};
+            //String[] noteClassifier = {"c", "cs", "d", "ds", "e", "f", "fs", "g", "gs", "a", "as", "b"};
             //byte noteByte;
             String noteByteString;
             ArrayList<String> noteList = new ArrayList<String>(Arrays.asList("c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"));
