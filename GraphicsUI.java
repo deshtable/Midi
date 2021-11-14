@@ -6,9 +6,10 @@ import java.awt.event.MouseListener;
 public class GraphicsUI extends JFrame implements MouseListener {
 
     String [] arpeggArr;
-
+    String notePressed;
     private JButton btn;
     private int xcoor, ycoor, width, height;
+    private int drawx, drawy, wSizex, wSizey, bSizey;
 
     public GraphicsUI (){
         setSize(1280, 720);
@@ -31,11 +32,12 @@ public class GraphicsUI extends JFrame implements MouseListener {
 
     private void drawKeys(Graphics g) {
 
-        int drawx = (int)(width * 0.20);
-        int drawy = (int) (height * 0.20);
-        int wSizex = (int)(width * 0.07);
-        int wSizey = (int)(height * 0.75);
-        int bSizey = (int)(wSizey * 0.6);
+        drawx = (int)(width * 0.20);
+        drawy = (int) (height * 0.20);
+
+        wSizex = (int)(width * 0.07);
+        wSizey = (int)(height * 0.75);
+        bSizey = (int)(wSizey * 0.6);
 
 
         for(int i=1;i<=7;i++)
@@ -73,8 +75,14 @@ public class GraphicsUI extends JFrame implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        notePressed = checkButtons(e);
+    }
 
+    private String checkButtons(MouseEvent e) {
 
+        //if(e.getX())
+
+        return "";
     }
 
     @Override
