@@ -19,9 +19,12 @@ public class Arpeggiator {
     public String[] runArpeggio(int typeArpeggio) {
 
         if (typeArpeggio == 1)  // If the type of arpeggio is chosen to be a major chord
+        {
             return majorArpeggio();
-        if (typeArpeggio == 2)  // If the type of arpeggio is chosen to be a major chord
+        }
+        if (typeArpeggio == 2) { // If the type of arpeggio is chosen to be a major chord
             return minorArpeggio();
+        }
         return null;
     }
 

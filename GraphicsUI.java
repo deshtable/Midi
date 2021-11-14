@@ -9,11 +9,13 @@ public class GraphicsUI extends JFrame implements MouseListener {
     String notePressed;
     private JButton btn;
     private int xcoor, ycoor, width, height;
-    private int drawx, drawy, wSizex, wSizey, bSizey;
+    private int drawx, drawy, wSizex, wSizey, bSizey, bSizex;
+    Arpeggiator Arpie;
 
     public GraphicsUI (){
         setSize(1280, 720);
         setVisible(true);
+        addMouseListener(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     public void paint(Graphics g) {
@@ -38,7 +40,7 @@ public class GraphicsUI extends JFrame implements MouseListener {
         wSizex = (int)(width * 0.07);
         wSizey = (int)(height * 0.75);
         bSizey = (int)(wSizey * 0.6);
-
+        bSizex= (wSizex/3)*2;
 
         for(int i=1;i<=7;i++)
         {
@@ -49,15 +51,15 @@ public class GraphicsUI extends JFrame implements MouseListener {
 
         }
 
-        int keySize= (wSizex/3)*2;
+
 
         g.setColor(Color.BLACK);
 
-        g.fillRect(drawx+keySize+wSizex, drawy, keySize, bSizey);
-        g.fillRect(drawx+keySize+2*wSizex, drawy, keySize, bSizey);
-        g.fillRect(drawx+keySize+4*wSizex, drawy, keySize, bSizey);
-        g.fillRect(drawx+keySize+5*wSizex, drawy, keySize, bSizey);
-        g.fillRect(drawx+keySize+6*wSizex, drawy, keySize, bSizey);
+        g.fillRect(drawx+bSizex+wSizex, drawy, bSizex, bSizey);
+        g.fillRect(drawx+bSizex+2*wSizex, drawy, bSizex, bSizey);
+        g.fillRect(drawx+bSizex+4*wSizex, drawy, bSizex, bSizey);
+        g.fillRect(drawx+bSizex+5*wSizex, drawy, bSizex, bSizey);
+        g.fillRect(drawx+bSizex+6*wSizex, drawy, bSizex, bSizey);
     }
 
     private void readFiles() {
@@ -76,13 +78,28 @@ public class GraphicsUI extends JFrame implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         notePressed = checkButtons(e);
+        if(notePressed != ""){
+        Arpie = new Arpeggiator(notePressed);
+        Arpie.playArpegg(1);}
+        System.out.println("mouse released");
+
+        notePressed = "";
     }
 
     private String checkButtons(MouseEvent e) {
 
-        //if(e.getX())
+
+        System.out.println("getX: " + e.getX() + " drawx + wSizex : " + (drawx+wSizex*2) + " || getY: " + e.getY() + "drawy + wSizey" + (wSizey+drawy));
+        if((e.getX()>drawx && e.getX()<drawx+wSizex*2 && e.getY() > drawy+bSizey && e.getY()<drawy+wSizey) ||
+                (e.getX()>drawx && e.getX()<drawx+(wSizex*2 - bSizex/2) && e.getY() > drawy && e.getY()<drawy+wSizey) )
+        {
+
+            System.out.println("Click Button yuh");
+            return "c";
+        }
 
         return "";
+
     }
 
     @Override
