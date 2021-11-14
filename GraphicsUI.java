@@ -21,28 +21,41 @@ public class GraphicsUI extends JFrame implements MouseListener {
         height = getSize().height;
         //setSize(getSize().width, getSize().height);
 
+        g.setColor(Color.RED);
+        g.fillRect(0, 0 , width, height);
+
         drawKeys(g);
 
 
     }
 
     private void drawKeys(Graphics g) {
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, width, height);
-        int drawx = width /3;
-        int drawy = height /3;
-        int sizex = width /25;
-        int sizey = height /2;
-        g.setColor(Color.BLACK);
-        for(int i=1;i<=7;i++)
-            g.drawRect(drawx+i*sizex, drawy, sizex, sizey);
-        int tempsize= (sizex/3)*2;
 
-        g.fillRect(drawx+tempsize+sizex, drawy, tempsize, sizey/2);
-        g.fillRect(drawx+tempsize+2*sizex, drawy, tempsize, sizey/2);
-        g.fillRect(drawx+tempsize+4*sizex, drawy, tempsize, sizey/2);
-        g.fillRect(drawx+tempsize+5*sizex, drawy, tempsize, sizey/2);
-        g.fillRect(drawx+tempsize+6*sizex, drawy, tempsize, sizey/2);
+        int drawx = (int)(width * 0.20);
+        int drawy = (int) (height * 0.20);
+        int wSizex = (int)(width * 0.07);
+        int wSizey = (int)(height * 0.75);
+        int bSizey = (int)(wSizey * 0.6);
+
+
+        for(int i=1;i<=7;i++)
+        {
+            g.setColor(Color.WHITE);
+            g.fillRect(drawx+i*wSizex, drawy, wSizex, wSizey);
+            g.setColor(Color.BLACK);
+            g.drawRect(drawx+i*wSizex, drawy, wSizex, wSizey);
+
+        }
+
+        int keySize= (wSizex/3)*2;
+
+        g.setColor(Color.BLACK);
+
+        g.fillRect(drawx+keySize+wSizex, drawy, keySize, bSizey);
+        g.fillRect(drawx+keySize+2*wSizex, drawy, keySize, bSizey);
+        g.fillRect(drawx+keySize+4*wSizex, drawy, keySize, bSizey);
+        g.fillRect(drawx+keySize+5*wSizex, drawy, keySize, bSizey);
+        g.fillRect(drawx+keySize+6*wSizex, drawy, keySize, bSizey);
     }
 
     private void readFiles() {
@@ -60,6 +73,7 @@ public class GraphicsUI extends JFrame implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
+
 
     }
 
