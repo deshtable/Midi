@@ -86,7 +86,6 @@ public class Arpeggiator {
           ArrayList<String> noteList = new ArrayList<String>(Arrays.asList("c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"));
           // Create an ArrayList object
           int noteByte;
-          String[] arpeggArr = {"c", "e", "g"};
           int startCount = 1;
           int endCount = 120;
           for (int i = 0; i < arpeggArr.length; i++) {
@@ -117,14 +116,23 @@ public class Arpeggiator {
           me = new MidiEvent(mt, (long) (endCount + 1));
           t.add(me);
           //****  write the MIDI sequence to a MIDI file  ****
-          Sequencer sequencer = new Sequencer()
+          
 
           try{
-            sequencer.setSequence(s)
-            start()
+            Sequencer sequencer;
+            sequencer = MidiSystem.getSequencer(); 
+            if (sequencer == null) {
+                // Error -- sequencer device is not supported.
+                // Inform user and return...
+            } else {
+                // Acquire resources and make operational.
+                sequencer.open();
+            }
+            sequencer.setSequence(s);
+            sequencer.start();
           }
           catch(Exception e){
-            System.out.println(e.toString())
+            System.out.println(e.toString());
           }
 
 
