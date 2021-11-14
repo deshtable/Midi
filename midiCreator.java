@@ -1,12 +1,4 @@
-/**
- * midifile.java
- *
- * A very short program which builds and writes
- * a one-note Midi file.
- *
- * author  Karl Brown
- * last updated 2/24/2003
- */
+
 import java.util.ArrayList; // import the ArrayList class
 
 import java.io.*;
@@ -20,6 +12,7 @@ public class midiCreator{
 
 
 }
+
 //****  Create a new MIDI sequence with 24 ticks per beat  ****
 	public static void constructor(String note, String key){
 
