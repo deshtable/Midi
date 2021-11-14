@@ -5,6 +5,6 @@ public class Main {
 
         Arpeggiator arpie = new Arpeggiator("c");
 
-        arpie.playArpegg(1);
+        arpie.playArpegg(2);
     }
 }
