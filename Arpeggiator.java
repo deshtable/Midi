@@ -4,41 +4,42 @@ import java.util.Arrays;
 import java.io.*;
 import java.util.*;
 import javax.sound.midi.*;
+
 public class Arpeggiator {
     String firstNote;
     int firstNoteInd;
     ArrayList<String> noteList = new ArrayList<String>(
-            Arrays.asList("c","c#","d","d#","e","f","f#","g","g#", "a", "a#", "b"));
+            Arrays.asList("c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"));
 
-    public Arpeggiator(String inNote){
+    public Arpeggiator(String inNote) {
         firstNote = inNote;
         firstNoteInd = noteList.indexOf(inNote);
     }
 
-    public void runArpeggio(int typeArpeggio){
+    public String[] runArpeggio(int typeArpeggio) {
 
-        if(typeArpeggio == 1)  // If the type of arpeggio is chosen to be a major chord
-            majorArpeggio();
+        if (typeArpeggio == 1)  // If the type of arpeggio is chosen to be a major chord
+            return majorArpeggio();
 
+        return null;
     }
 
     private String[] majorArpeggio() {
 
-        String [] arpeggArr = new String[3];
+        String[] arpeggArr = new String[3];
 
         arpeggArr[0] = noteList.get(firstNoteInd);
         arpeggArr[1] = noteList.get(firstNoteInd + 4);
-        arpeggArr[2] = noteList.get(firstNoteInd + 3);
+        arpeggArr[2] = noteList.get(firstNoteInd + 7);
         //
         return arpeggArr;
     }
 
 
+    public void playArpegg(int typeArp) { // takes in the final arpeggArr from graphics and plays it through sequencer
 
+        String[] arpeggArr = runArpeggio(typeArp);
 
-
-
-    public void playArpegg(String[] arpeggArr){ // takes in the final arpeggArr from graphics and plays it through sequencer
         try {
 
             Sequence s = new Sequence(javax.sound.midi.Sequence.PPQ, 24);
@@ -123,7 +124,7 @@ public class Arpeggiator {
             //****  write the MIDI sequence to a MIDI file  ****
 
 
-            try{
+            try {
                 Sequencer sequencer;
                 sequencer = MidiSystem.getSequencer();
                 if (sequencer == null) {
@@ -135,8 +136,7 @@ public class Arpeggiator {
                 }
                 sequencer.setSequence(s);
                 sequencer.start();
-            }
-            catch(Exception e){
+            } catch (Exception e) {
                 System.out.println(e.toString());
             }
 
